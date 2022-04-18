@@ -1,0 +1,10 @@
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\bin\Debug\YuvImageShow.exe.config
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\bin\Debug\YuvImageShow.exe
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\bin\Debug\YuvImageShow.pdb
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Debug\YuvImageShow.csprojAssemblyReference.cache
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Debug\YuvImageShow.Form1.resources
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Debug\YuvImageShow.Properties.Resources.resources
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Debug\YuvImageShow.csproj.GenerateResource.cache
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Debug\YuvImageShow.csproj.CoreCompileInputs.cache
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Debug\YuvImageShow.exe
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Debug\YuvImageShow.pdb
