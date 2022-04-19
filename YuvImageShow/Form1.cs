@@ -44,6 +44,8 @@ namespace YuvImageShow
 
         }
 
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             openDlg = new OpenFileDialog();
@@ -61,6 +63,68 @@ namespace YuvImageShow
             else
                 pixelValue = (pixelValue < 0) ? 0 : 255;
             return pixelValue;
+        }
+
+        static double[,] YUV2RGB_CONVERT_MATRIX = new double[3, 3] { { 1, 0, 1.4022 }, { 1, -0.3456, -0.7145 }, { 1, 1.771, 0 } };
+
+        private unsafe byte[] ColorYuv444ToRgbImage_c(byte[] I0, long bufferLength, int image_width, int height)
+        {
+            int x;
+            byte[] J0 = new byte[bufferLength * 6 / 4];
+
+            //Process two Y,U,V triples per iteration:
+            for (x = 0; x < image_width; x += 2)
+            {
+                //Load source elements
+                byte y0 = I0[x * 3];                  //Load source Y element
+                int u0 = (int)I0[x * 3 + 1];  //Load source U element (and convert from uint8 to uint32).
+                int v0 = (int)I0[x * 3 + 2];  //Load source V element (and convert from uint8 to uint32).
+
+            //Load next source elements
+            byte y1 = I0[x * 3 + 3];                //Load source Y element
+            int u1 = (int)I0[x * 3 + 4];  //Load source U element (and convert from uint8 to uint32).
+            int v1 = (int)I0[x * 3 + 5];  //Load source V element (and convert from uint8 to uint32).
+
+            //Calculate destination U, and V elements.
+            //Use shift right by 1 for dividing by 2.
+            //Use plus 1 before shifting - round operation instead of floor operation.
+            int u01 = (u0 + u1 + 1) >> 1;       //Destination U element equals average of two source U elements.
+            int v01 = (v0 + v1 + 1) >> 1;       //Destination U element equals average of two source U elements.
+
+            J0[x * 2] = y0;   //Store Y element (unmodified).
+            J0[x * 2 + 1] = (byte)u01;   //Store destination U element (and cast uint32 to uint8).
+            J0[x * 2 + 2] = y1;   //Store Y element (unmodified).
+            J0[x * 2 + 3] = (byte)v01;   //Store destination V element (and cast uint32 to uint8).
+            }
+            return J0;
+        }
+        private unsafe byte[] ColorYuv444ToRgbImage(byte[] yuvFrame, long bufferLength, int width, int height)
+        {
+            int uIndex = width * height;
+            int vIndex = uIndex + ((width * height) >> 2);
+            int gIndex = width * height;
+            int bIndex = gIndex * 2;
+
+            int temp = 0;
+            byte[] rgbFrame = new byte[bufferLength * 6 / 4];
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    // R分量
+                    temp = (int)(yuvFrame[y * width + x] + (yuvFrame[vIndex + (y / 2) * (width / 2) + x / 2] - 128) * YUV2RGB_CONVERT_MATRIX[0, 2]);
+                    rgbFrame[y * width + x] = (byte)(temp < 0 ? 0 : (temp > 255 ? 255 : temp));
+
+                    // G分量
+                    temp = (int)(yuvFrame[y * width + x] + (yuvFrame[uIndex + (y / 2) * (width / 2) + x / 2] - 128) * YUV2RGB_CONVERT_MATRIX[1, 1] + (yuvFrame[vIndex + (y / 2) * (width / 2) + x / 2] - 128) * YUV2RGB_CONVERT_MATRIX[1, 2]);
+                    rgbFrame[gIndex + y * width + x] = (byte)(temp < 0 ? 0 : (temp > 255 ? 255 : temp));
+
+                    // B分量
+                    temp = (int)(yuvFrame[y * width + x] + (yuvFrame[uIndex + (y / 2) * (width / 2) + x / 2] - 128) * YUV2RGB_CONVERT_MATRIX[2, 1]);
+                    rgbFrame[bIndex + y * width + x] = (byte)(temp < 0 ? 0 : (temp > 255 ? 255 : temp));
+                }
+            }
+            return rgbFrame;
         }
 
         private unsafe byte[] ColorYuvToRgbImage(IntPtr buffer, long bufferLength)
@@ -117,26 +181,55 @@ namespace YuvImageShow
                     IntPtr buffer = Marshal.AllocHGlobal((IntPtr)file.Length);
                     buffer = System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(b_buffer, 0);
                     
-                    Bitmap bmp = new Bitmap(176, 144, PixelFormat.Format24bppRgb);
-                    BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
-
-                    byte[] newImgData = ColorYuvToRgbImage(buffer, (int)file.Length);
-                    //Bitmap bmp = new Bitmap(pathname);
-                    unsafe
+                    if(radioButton1.Checked)
                     {
-                        byte* pNative = (byte*)bmpData.Scan0;
-                        //for (int len = 0; len < newImgData.Length; len++)
-                        for (int len = 0; len < 0x13000; len++)
-                        {
-                            pNative[len] = newImgData[len];
-                        }
+                        //YUV420
                     }
-                    bmp.UnlockBits(bmpData);
+                    else if (radioButton2.Checked)
+                    {
+                        //YUV422
+                        Bitmap bmp = new Bitmap(1920, 1080, PixelFormat.Format24bppRgb);
+                        BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
+
+                        byte[] newImgData = ColorYuvToRgbImage(buffer, (int)file.Length);
+                        //Bitmap bmp = new Bitmap(pathname);
+                        unsafe
+                        {
+                            byte* pNative = (byte*)bmpData.Scan0;
+                            //for (int len = 0; len < newImgData.Length; len++)
+                            for (int len = 0; len < file.Length; len++)
+                            {
+                                pNative[len] = newImgData[len];
+                            }
+                        }
+                        bmp.UnlockBits(bmpData);
+                        pictureBox1.Image = bmp;
+                    }
+                    else if (radioButton3.Checked)
+                    {
+                        //YUV444
+                        Bitmap bmp = new Bitmap(176, 144, PixelFormat.Format24bppRgb);
+                        BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
+
+                        byte[] newImgData = ColorYuv444ToRgbImage_c(b_buffer, (int)file.Length, 176, 144);
+                        unsafe
+                        {
+                            byte* pNative = (byte*)bmpData.Scan0;
+                            //for (int len = 0; len < newImgData.Length; len++)
+                            for (int len = 0; len < 0x13000; len++)
+                            {
+                                pNative[len] = newImgData[len];
+                            }
+                        }
+                        bmp.UnlockBits(bmpData);
+                        pictureBox1.Image = bmp;
+                    }
+
+                    
 
 
 
                     //Image img = Image.FromHbitmap(bmp.GetHbitmap());
-                    pictureBox1.Image = bmp;
                     pictureBox1.Show();
                     pictureBox1.Refresh();
 
