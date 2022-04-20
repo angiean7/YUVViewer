@@ -131,6 +131,27 @@ namespace YuvImageShow
             }
             return RgbImgData;
         }
+        private unsafe byte[] GrayYuvToRgbImage(IntPtr buffer, long bufferLength)
+        {
+            IntPtr pImageData = buffer;
+            long nLength = bufferLength;
+            byte[] RgbImgData = new byte[nLength * 3];
+            byte pixel_y0 = 0;
+            int iYuvOff = 0;
+            int iRgbOff = 0;
+            byte* pbtYuvImageData = (byte*)pImageData;
+
+            for (iYuvOff = 0; iYuvOff < nLength; iYuvOff++)
+            {
+                pixel_y0 = *(pbtYuvImageData + iYuvOff);
+                int pixelValue = GetPixelValue((int)(1164 * (pixel_y0 - 16)));
+                RgbImgData[iRgbOff + 0] = (byte)pixelValue;
+                RgbImgData[iRgbOff + 1] = (byte)pixelValue;
+                RgbImgData[iRgbOff + 2] = (byte)pixelValue;
+                iRgbOff = iRgbOff + 3;
+            }
+            return RgbImgData;
+        }
 
         private unsafe byte[] ColorYuv444ToRgbImage(IntPtr buffer, long bufferLength)
         {
@@ -225,7 +246,7 @@ namespace YuvImageShow
                     BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
 
 
-                    if (radioButton1.Checked)
+                    if (button_YUV420.Checked)
                     {
                         //YUV420
                         byte[] newImgData = ColorYuv420ToRgbImage(buffer, (int)file.Length);
@@ -240,7 +261,7 @@ namespace YuvImageShow
                         bmp.UnlockBits(bmpData);
                         pictureBox1.Image = bmp;
                     }
-                    else if (radioButton2.Checked)
+                    else if (button_YUV422.Checked)
                     {
                         //YUV422
                         byte[] newImgData = ColorYuv422ToRgbImage(buffer, (int)file.Length);
@@ -255,7 +276,7 @@ namespace YuvImageShow
                         bmp.UnlockBits(bmpData);
                         pictureBox1.Image = bmp;
                     }
-                    else if (radioButton3.Checked)
+                    else if (button_YUV444.Checked)
                     {
                         //YUV444
                         byte[] newImgData = ColorYuv444ToRgbImage(buffer, (int)file.Length);
@@ -270,7 +291,37 @@ namespace YuvImageShow
                         bmp.UnlockBits(bmpData);
                         pictureBox1.Image = bmp;
                     }
-                    
+                    else if (button_RGB.Checked)
+                    {
+                        //RGB
+                        byte[] newImgData = b_buffer;
+                        unsafe
+                        {
+                            byte* pNative = (byte*)bmpData.Scan0;
+                            for (int len = 0; len < file.Length; len++)
+                            {
+                                pNative[len] = newImgData[len];
+                            }
+                        }
+                        bmp.UnlockBits(bmpData);
+                        pictureBox1.Image = bmp;
+                    }
+                    else if (button_Y8.Checked)
+                    {
+                        //Y8
+                        byte[] newImgData = GrayYuvToRgbImage(buffer, (int)file.Length);
+                        unsafe
+                        {
+                            byte* pNative = (byte*)bmpData.Scan0;
+                            for (int len = 0; len < file.Length; len++)
+                            {
+                                pNative[len] = newImgData[len];
+                            }
+                        }
+                        bmp.UnlockBits(bmpData);
+                        pictureBox1.Image = bmp;
+                    }
+
                     //Image img = Image.FromHbitmap(bmp.GetHbitmap());
                     pictureBox1.Show();
                     pictureBox1.Refresh();

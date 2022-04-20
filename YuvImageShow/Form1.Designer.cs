@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.button_YUV420 = new System.Windows.Forms.RadioButton();
+            this.button_YUV422 = new System.Windows.Forms.RadioButton();
+            this.button_YUV444 = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_browse = new System.Windows.Forms.Button();
+            this.button_convert = new System.Windows.Forms.Button();
+            this.button_RGB = new System.Windows.Forms.RadioButton();
+            this.button_Y8 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,41 +48,41 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // radioButton1
+            // button_YUV420
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(100, 98);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(76, 19);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "YUV420";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.button_YUV420.AutoSize = true;
+            this.button_YUV420.Location = new System.Drawing.Point(100, 98);
+            this.button_YUV420.Name = "button_YUV420";
+            this.button_YUV420.Size = new System.Drawing.Size(76, 19);
+            this.button_YUV420.TabIndex = 1;
+            this.button_YUV420.TabStop = true;
+            this.button_YUV420.Text = "YUV420";
+            this.button_YUV420.UseVisualStyleBackColor = true;
+            this.button_YUV420.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioButton2
+            // button_YUV422
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(225, 98);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(76, 19);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "YUV422";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.button_YUV422.AutoSize = true;
+            this.button_YUV422.Location = new System.Drawing.Point(182, 98);
+            this.button_YUV422.Name = "button_YUV422";
+            this.button_YUV422.Size = new System.Drawing.Size(76, 19);
+            this.button_YUV422.TabIndex = 2;
+            this.button_YUV422.TabStop = true;
+            this.button_YUV422.Text = "YUV422";
+            this.button_YUV422.UseVisualStyleBackColor = true;
+            this.button_YUV422.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton3
+            // button_YUV444
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(362, 98);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(76, 19);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "YUV444";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.button_YUV444.AutoSize = true;
+            this.button_YUV444.Location = new System.Drawing.Point(264, 98);
+            this.button_YUV444.Name = "button_YUV444";
+            this.button_YUV444.Size = new System.Drawing.Size(76, 19);
+            this.button_YUV444.TabIndex = 3;
+            this.button_YUV444.TabStop = true;
+            this.button_YUV444.Text = "YUV444";
+            this.button_YUV444.UseVisualStyleBackColor = true;
+            this.button_YUV444.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // textBox1
             // 
@@ -89,25 +91,47 @@
             this.textBox1.Size = new System.Drawing.Size(338, 25);
             this.textBox1.TabIndex = 4;
             // 
-            // button1
+            // button_browse
             // 
-            this.button1.Location = new System.Drawing.Point(472, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_browse.Location = new System.Drawing.Point(472, 42);
+            this.button_browse.Name = "button_browse";
+            this.button_browse.Size = new System.Drawing.Size(75, 23);
+            this.button_browse.TabIndex = 5;
+            this.button_browse.Text = "Browse";
+            this.button_browse.UseVisualStyleBackColor = true;
+            this.button_browse.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // button_convert
             // 
-            this.button2.Location = new System.Drawing.Point(472, 98);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Convert";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_convert.Location = new System.Drawing.Point(472, 96);
+            this.button_convert.Name = "button_convert";
+            this.button_convert.Size = new System.Drawing.Size(75, 23);
+            this.button_convert.TabIndex = 6;
+            this.button_convert.Text = "Convert";
+            this.button_convert.UseVisualStyleBackColor = true;
+            this.button_convert.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button_RGB
+            // 
+            this.button_RGB.AutoSize = true;
+            this.button_RGB.Location = new System.Drawing.Point(346, 98);
+            this.button_RGB.Name = "button_RGB";
+            this.button_RGB.Size = new System.Drawing.Size(52, 19);
+            this.button_RGB.TabIndex = 7;
+            this.button_RGB.TabStop = true;
+            this.button_RGB.Text = "RGB";
+            this.button_RGB.UseVisualStyleBackColor = true;
+            // 
+            // button_Y8
+            // 
+            this.button_Y8.AutoSize = true;
+            this.button_Y8.Location = new System.Drawing.Point(404, 98);
+            this.button_Y8.Name = "button_Y8";
+            this.button_Y8.Size = new System.Drawing.Size(44, 19);
+            this.button_Y8.TabIndex = 8;
+            this.button_Y8.TabStop = true;
+            this.button_Y8.Text = "Y8";
+            this.button_Y8.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -115,12 +139,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1615, 973);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_Y8);
+            this.Controls.Add(this.button_RGB);
+            this.Controls.Add(this.button_convert);
+            this.Controls.Add(this.button_browse);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.button_YUV444);
+            this.Controls.Add(this.button_YUV422);
+            this.Controls.Add(this.button_YUV420);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "ImageShow";
@@ -134,12 +160,14 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton button_YUV420;
+        private System.Windows.Forms.RadioButton button_YUV422;
+        private System.Windows.Forms.RadioButton button_YUV444;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_browse;
+        private System.Windows.Forms.Button button_convert;
+        private System.Windows.Forms.RadioButton button_RGB;
+        private System.Windows.Forms.RadioButton button_Y8;
     }
 }
 
