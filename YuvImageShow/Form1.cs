@@ -80,28 +80,28 @@ namespace YuvImageShow
                     pixel_y1921 = *(pbtYuvImageData + iYuvOff + YUV_width + 2 + i*3);
 
                     int pixel_R = GetPixelValue((int)(1164 * (pixel_y0 - 16) + 1596 * (pixel_cr_0 - 128)));
-                    int pixel_G = GetPixelValue((int)(1164 * (pixel_y0 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
+                    int pixel_G = GetPixelValue((int)(1164 * (pixel_y0 - 16) - 813  * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
                     int pixel_B = GetPixelValue((int)(1164 * (pixel_y0 - 16) + 2018 * (pixel_cb_0 - 128)));
                     RgbImgData[iRgbOff + 0] = (byte)pixel_B;
                     RgbImgData[iRgbOff + 1] = (byte)pixel_G;
                     RgbImgData[iRgbOff + 2] = (byte)pixel_R;
 
                     pixel_R = GetPixelValue((int)(1164 * (pixel_y1 - 16) + 1596 * (pixel_cr_0 - 128)));
-                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
+                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1 - 16) - 813  * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
                     pixel_B = GetPixelValue((int)(1164 * (pixel_y1 - 16) + 2018 * (pixel_cb_0 - 128)));
                     RgbImgData[iRgbOff + 3] = (byte)pixel_B;
                     RgbImgData[iRgbOff + 4] = (byte)pixel_G;
                     RgbImgData[iRgbOff + 5] = (byte)pixel_R;
                     
                     pixel_R = GetPixelValue((int)(1164 * (pixel_y1920 - 16) + 1596 * (pixel_cr_0 - 128)));
-                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1920 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
+                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1920 - 16) - 813  * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
                     pixel_B = GetPixelValue((int)(1164 * (pixel_y1920 - 16) + 2018 * (pixel_cb_0 - 128)));
                     RgbImgData[iRgbOff + (pixel_width*3) + 0] = (byte)pixel_B;
                     RgbImgData[iRgbOff + (pixel_width*3) + 1] = (byte)pixel_G;
                     RgbImgData[iRgbOff + (pixel_width*3) + 2] = (byte)pixel_R;
 
                     pixel_R = GetPixelValue((int)(1164 * (pixel_y1921 - 16) + 1596 * (pixel_cr_0 - 128)));
-                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1921 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
+                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1921 - 16) - 813  * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
                     pixel_B = GetPixelValue((int)(1164 * (pixel_y1921 - 16) + 2018 * (pixel_cb_0 - 128)));
                     RgbImgData[iRgbOff + (pixel_width*3) + 3] = (byte)pixel_B;
                     RgbImgData[iRgbOff + (pixel_width*3) + 4] = (byte)pixel_G;
