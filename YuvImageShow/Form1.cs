@@ -49,34 +49,35 @@ namespace YuvImageShow
 
         private unsafe byte[] ColorYuv420ToRgbImage(IntPtr buffer, long bufferLength)
         {
+            int pixel_width = 1920;
+            int YUV_width = pixel_width*3/2;
+            
             IntPtr pImageData = buffer;
             long nLength = bufferLength;
             byte[] RgbImgData = new byte[nLength * 2];
             byte pixel_y0 = 0;
             byte pixel_cb_0 = 0;
             byte pixel_y1 = 0;
-            
             byte pixel_y1920 = 0;
             byte pixel_cr_0 = 0;
             byte pixel_y1921 = 0;
-
             int iYuvOff = 0;
             int iRgbOff = 0;
             int i=0;
 
             byte* pbtYuvImageData = (byte*)pImageData;
 
-            for (iYuvOff = 0; iYuvOff < nLength; iYuvOff += 1920*2)
+            for (iYuvOff = 0; (iYuvOff+YUV_width*2) < nLength; iYuvOff += YUV_width*2)
             {
-                for(i=0;i<640;i++)
+                for(i = 0; i < (YUV_width/3); i++)
                 {
-                    pixel_y0   = *(pbtYuvImageData + iYuvOff + 0 + i*3);
-                    pixel_cb_0 = *(pbtYuvImageData + iYuvOff + 1 + i*3);//u0
-                    pixel_y1   = *(pbtYuvImageData + iYuvOff + 2 + i*3);
+                    pixel_y0    = *(pbtYuvImageData + iYuvOff + 0 + i*3);
+                    pixel_cb_0  = *(pbtYuvImageData + iYuvOff + 1 + i*3);//u0
+                    pixel_y1    = *(pbtYuvImageData + iYuvOff + 2 + i*3);
 
-                    pixel_y1920 = *(pbtYuvImageData + iYuvOff + 1920 + i*3);
-                    pixel_cr_0  = *(pbtYuvImageData + iYuvOff + 1921 + i*3);//v0
-                    pixel_y1921 = *(pbtYuvImageData + iYuvOff + 1922 + i*3);
+                    pixel_y1920 = *(pbtYuvImageData + iYuvOff + YUV_width + 0 + i*3);
+                    pixel_cr_0  = *(pbtYuvImageData + iYuvOff + YUV_width + 1 + i*3);//v0
+                    pixel_y1921 = *(pbtYuvImageData + iYuvOff + YUV_width + 2 + i*3);
 
                     int pixel_R = GetPixelValue((int)(1164 * (pixel_y0 - 16) + 1596 * (pixel_cr_0 - 128)));
                     int pixel_G = GetPixelValue((int)(1164 * (pixel_y0 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
@@ -95,23 +96,24 @@ namespace YuvImageShow
                     pixel_R = GetPixelValue((int)(1164 * (pixel_y1920 - 16) + 1596 * (pixel_cr_0 - 128)));
                     pixel_G = GetPixelValue((int)(1164 * (pixel_y1920 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
                     pixel_B = GetPixelValue((int)(1164 * (pixel_y1920 - 16) + 2018 * (pixel_cb_0 - 128)));
-                    RgbImgData[iRgbOff + 1280] = (byte)pixel_B;
-                    RgbImgData[iRgbOff + 1281] = (byte)pixel_G;
-                    RgbImgData[iRgbOff + 1282] = (byte)pixel_R;
+                    RgbImgData[iRgbOff + (pixel_width*3) + 0] = (byte)pixel_B;
+                    RgbImgData[iRgbOff + (pixel_width*3) + 1] = (byte)pixel_G;
+                    RgbImgData[iRgbOff + (pixel_width*3) + 2] = (byte)pixel_R;
 
                     pixel_R = GetPixelValue((int)(1164 * (pixel_y1921 - 16) + 1596 * (pixel_cr_0 - 128)));
                     pixel_G = GetPixelValue((int)(1164 * (pixel_y1921 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
                     pixel_B = GetPixelValue((int)(1164 * (pixel_y1921 - 16) + 2018 * (pixel_cb_0 - 128)));
-                    RgbImgData[iRgbOff + 1283] = (byte)pixel_B;
-                    RgbImgData[iRgbOff + 1284] = (byte)pixel_G;
-                    RgbImgData[iRgbOff + 1285] = (byte)pixel_R;
+                    RgbImgData[iRgbOff + (pixel_width*3) + 3] = (byte)pixel_B;
+                    RgbImgData[iRgbOff + (pixel_width*3) + 4] = (byte)pixel_G;
+                    RgbImgData[iRgbOff + (pixel_width*3) + 5] = (byte)pixel_R;
 
                     iRgbOff = iRgbOff + 6;
                 }
-                iRgbOff += 640 * 6;
+                iRgbOff += (pixel_width*3);
             }
             return RgbImgData;
         }
+
         private unsafe byte[] GrayYuvToRgbImage(IntPtr buffer, long bufferLength)
         {
             IntPtr pImageData = buffer;
@@ -225,6 +227,7 @@ namespace YuvImageShow
                     buffer = System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(b_buffer, 0);
 
                     Bitmap bmp = new Bitmap(1920, 1080, PixelFormat.Format24bppRgb);
+                    //Bitmap bmp = new Bitmap(176, 144, PixelFormat.Format24bppRgb);
                     BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
 
 
@@ -235,7 +238,9 @@ namespace YuvImageShow
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
-                            for (int len = 0; len < file.Length; len++)
+                            //for (int len = 0; len < newImgData.Length; len++)
+                            for (int len = 0; len < 6220800; len++)
+                            //for (int len = 0; len < 0x13000; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -250,7 +255,7 @@ namespace YuvImageShow
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
-                            for (int len = 0; len < file.Length; len++)
+                            for (int len = 0; len < newImgData.Length; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -265,7 +270,7 @@ namespace YuvImageShow
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0; 
-                            for (int len = 0; len < file.Length; len++)
+                            for (int len = 0; len < newImgData.Length; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -280,7 +285,7 @@ namespace YuvImageShow
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
-                            for (int len = 0; len < file.Length; len++)
+                            for (int len = 0; len < newImgData.Length; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -295,7 +300,7 @@ namespace YuvImageShow
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
-                            for (int len = 0; len < file.Length; len++)
+                            for (int len = 0; len < newImgData.Length; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
