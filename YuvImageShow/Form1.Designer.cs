@@ -42,9 +42,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 136);
+            this.pictureBox1.Location = new System.Drawing.Point(60, 136);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1591, 825);
+            this.pictureBox1.Size = new System.Drawing.Size(1920, 1080);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -58,7 +58,6 @@
             this.button_YUV420.TabStop = true;
             this.button_YUV420.Text = "YUV420";
             this.button_YUV420.UseVisualStyleBackColor = true;
-            this.button_YUV420.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // button_YUV422
             // 
@@ -70,7 +69,6 @@
             this.button_YUV422.TabStop = true;
             this.button_YUV422.Text = "YUV422";
             this.button_YUV422.UseVisualStyleBackColor = true;
-            this.button_YUV422.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // button_YUV444
             // 
@@ -82,13 +80,12 @@
             this.button_YUV444.TabStop = true;
             this.button_YUV444.Text = "YUV444";
             this.button_YUV444.UseVisualStyleBackColor = true;
-            this.button_YUV444.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(100, 41);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(338, 25);
+            this.textBox1.Size = new System.Drawing.Size(348, 25);
             this.textBox1.TabIndex = 4;
             // 
             // button_browse
@@ -137,8 +134,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1615, 973);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1062, 973);
             this.Controls.Add(this.button_Y8);
             this.Controls.Add(this.button_RGB);
             this.Controls.Add(this.button_convert);
