@@ -28,7 +28,6 @@ namespace YuvImageShow
 
         }
         
-
         private void button1_Click(object sender, EventArgs e)
         {
             openDlg = new OpenFileDialog();
@@ -57,9 +56,9 @@ namespace YuvImageShow
             byte pixel_cb_0 = 0;
             byte pixel_y1 = 0;
             
-            byte pixel_y8 = 0;
+            byte pixel_y1920 = 0;
             byte pixel_cr_0 = 0;
-            byte pixel_y9 = 0;
+            byte pixel_y1921 = 0;
 
             int iYuvOff = 0;
             int iRgbOff = 0;
@@ -67,17 +66,17 @@ namespace YuvImageShow
 
             byte* pbtYuvImageData = (byte*)pImageData;
 
-            for (iYuvOff = 0; iYuvOff < nLength; iYuvOff += 24)
+            for (iYuvOff = 0; iYuvOff < nLength; iYuvOff += 1920*2)
             {
-                for(i=0;i<4;i++)
+                for(i=0;i<640;i++)
                 {
                     pixel_y0   = *(pbtYuvImageData + iYuvOff + 0 + i*3);
                     pixel_cb_0 = *(pbtYuvImageData + iYuvOff + 1 + i*3);//u0
                     pixel_y1   = *(pbtYuvImageData + iYuvOff + 2 + i*3);
 
-                    pixel_y8   = *(pbtYuvImageData + iYuvOff + 12 + i*3);
-                    pixel_cr_0 = *(pbtYuvImageData + iYuvOff + 13 + i*3);//v0
-                    pixel_y9   = *(pbtYuvImageData + iYuvOff + 14 + i*3);
+                    pixel_y1920 = *(pbtYuvImageData + iYuvOff + 1920 + i*3);
+                    pixel_cr_0  = *(pbtYuvImageData + iYuvOff + 1921 + i*3);//v0
+                    pixel_y1921 = *(pbtYuvImageData + iYuvOff + 1922 + i*3);
 
                     int pixel_R = GetPixelValue((int)(1164 * (pixel_y0 - 16) + 1596 * (pixel_cr_0 - 128)));
                     int pixel_G = GetPixelValue((int)(1164 * (pixel_y0 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
@@ -93,23 +92,23 @@ namespace YuvImageShow
                     RgbImgData[iRgbOff + 4] = (byte)pixel_G;
                     RgbImgData[iRgbOff + 5] = (byte)pixel_R;
                     
-                    pixel_R = GetPixelValue((int)(1164 * (pixel_y8 - 16) + 1596 * (pixel_cr_0 - 128)));
-                    pixel_G = GetPixelValue((int)(1164 * (pixel_y8 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
-                    pixel_B = GetPixelValue((int)(1164 * (pixel_y8 - 16) + 2018 * (pixel_cb_0 - 128)));
-                    RgbImgData[iRgbOff + 23] = (byte)pixel_B;
-                    RgbImgData[iRgbOff + 24] = (byte)pixel_G;
-                    RgbImgData[iRgbOff + 25] = (byte)pixel_R;
+                    pixel_R = GetPixelValue((int)(1164 * (pixel_y1920 - 16) + 1596 * (pixel_cr_0 - 128)));
+                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1920 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
+                    pixel_B = GetPixelValue((int)(1164 * (pixel_y1920 - 16) + 2018 * (pixel_cb_0 - 128)));
+                    RgbImgData[iRgbOff + 1280] = (byte)pixel_B;
+                    RgbImgData[iRgbOff + 1281] = (byte)pixel_G;
+                    RgbImgData[iRgbOff + 1282] = (byte)pixel_R;
 
-                    pixel_R = GetPixelValue((int)(1164 * (pixel_y9 - 16) + 1596 * (pixel_cr_0 - 128)));
-                    pixel_G = GetPixelValue((int)(1164 * (pixel_y9 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
-                    pixel_B = GetPixelValue((int)(1164 * (pixel_y9 - 16) + 2018 * (pixel_cb_0 - 128)));
-                    RgbImgData[iRgbOff + 26] = (byte)pixel_B;
-                    RgbImgData[iRgbOff + 27] = (byte)pixel_G;
-                    RgbImgData[iRgbOff + 28] = (byte)pixel_R;
+                    pixel_R = GetPixelValue((int)(1164 * (pixel_y1921 - 16) + 1596 * (pixel_cr_0 - 128)));
+                    pixel_G = GetPixelValue((int)(1164 * (pixel_y1921 - 16) - 813 * (pixel_cr_0 - 128) - 391 * (pixel_cb_0 - 128)));
+                    pixel_B = GetPixelValue((int)(1164 * (pixel_y1921 - 16) + 2018 * (pixel_cb_0 - 128)));
+                    RgbImgData[iRgbOff + 1283] = (byte)pixel_B;
+                    RgbImgData[iRgbOff + 1284] = (byte)pixel_G;
+                    RgbImgData[iRgbOff + 1285] = (byte)pixel_R;
 
                     iRgbOff = iRgbOff + 6;
                 }
-                iRgbOff += 8 * 3;
+                iRgbOff += 640 * 6;
             }
             return RgbImgData;
         }
@@ -148,7 +147,6 @@ namespace YuvImageShow
             int iRgbOff = 0;
             byte[] RgbImgData = new byte[bufferLength];
             byte* pbtYuvImageData = (byte*)pImageData;
-
 
             for (iYuvOff = 0; iYuvOff < bufferLength; iYuvOff += 3)
             {
@@ -217,6 +215,7 @@ namespace YuvImageShow
             {
                 try
                 {
+                    //open file and get buffer
                     pathname = openDlg.FileName;
                     FileStream file = File.Open(pathname, FileMode.Open);
                     byte[] b_buffer = new byte[file.Length];
@@ -304,12 +303,9 @@ namespace YuvImageShow
                         bmp.UnlockBits(bmpData);
                         pictureBox1.Image = bmp;
                     }
-
-                    //Image img = Image.FromHbitmap(bmp.GetHbitmap());
+                    
                     pictureBox1.Show();
                     pictureBox1.Refresh();
-
-                    //this.pictureBox1.Load(pathname);
                     file.Close();
 
                 }
