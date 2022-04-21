@@ -240,7 +240,6 @@ namespace YuvImageShow
                             byte* pNative = (byte*)bmpData.Scan0;
                             //for (int len = 0; len < newImgData.Length; len++)
                             for (int len = 0; len < 6220800; len++)
-                            //for (int len = 0; len < 0x13000; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -319,7 +318,6 @@ namespace YuvImageShow
                     MessageBox.Show(ex.Message);
                 }
             }
-
         }
     }
 }
