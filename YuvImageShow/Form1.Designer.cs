@@ -100,7 +100,7 @@
             // 
             // button_convert
             // 
-            this.button_convert.BackColor = System.Drawing.Color.Plum;
+            this.button_convert.BackColor = System.Drawing.Color.Gainsboro;
             this.button_convert.Location = new System.Drawing.Point(930, 15);
             this.button_convert.Name = "button_convert";
             this.button_convert.Size = new System.Drawing.Size(75, 23);
