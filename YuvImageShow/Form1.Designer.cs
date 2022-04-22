@@ -37,6 +37,7 @@
             this.button_convert = new System.Windows.Forms.Button();
             this.button_RGB = new System.Windows.Forms.RadioButton();
             this.button_Y8 = new System.Windows.Forms.RadioButton();
+            this.size_box = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,7 +102,7 @@
             // button_convert
             // 
             this.button_convert.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_convert.Location = new System.Drawing.Point(930, 15);
+            this.button_convert.Location = new System.Drawing.Point(1053, 17);
             this.button_convert.Name = "button_convert";
             this.button_convert.Size = new System.Drawing.Size(75, 23);
             this.button_convert.TabIndex = 6;
@@ -131,13 +132,25 @@
             this.button_Y8.Text = "Y8";
             this.button_Y8.UseVisualStyleBackColor = true;
             // 
+            // size_box
+            // 
+            this.size_box.FormattingEnabled = true;
+            this.size_box.Items.AddRange(new object[] {
+            "1920*1020"});
+            this.size_box.Location = new System.Drawing.Point(912, 17);
+            this.size_box.Name = "size_box";
+            this.size_box.Size = new System.Drawing.Size(121, 23);
+            this.size_box.TabIndex = 9;
+            this.size_box.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1062, 973);
+            this.ClientSize = new System.Drawing.Size(1205, 973);
+            this.Controls.Add(this.size_box);
             this.Controls.Add(this.button_Y8);
             this.Controls.Add(this.button_RGB);
             this.Controls.Add(this.button_convert);
@@ -167,6 +180,7 @@
         private System.Windows.Forms.Button button_convert;
         private System.Windows.Forms.RadioButton button_RGB;
         private System.Windows.Forms.RadioButton button_Y8;
+        private System.Windows.Forms.ComboBox size_box;
     }
 }
 
