@@ -137,7 +137,7 @@
             this.size_box.FormattingEnabled = true;
             this.size_box.Items.AddRange(new object[] {
             "1920*1020"});
-            this.size_box.Location = new System.Drawing.Point(912, 17);
+            this.size_box.Location = new System.Drawing.Point(912, 14);
             this.size_box.Name = "size_box";
             this.size_box.Size = new System.Drawing.Size(121, 23);
             this.size_box.TabIndex = 9;

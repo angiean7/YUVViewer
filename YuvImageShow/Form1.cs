@@ -26,6 +26,7 @@ namespace YuvImageShow
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            size_box.SelectedIndex = 0;
         }
         
         private void button1_Click(object sender, EventArgs e)
