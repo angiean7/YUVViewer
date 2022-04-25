@@ -278,6 +278,7 @@ namespace YuvImageShow
                         bmp.UnlockBits(bmpData);
                         pictureBox1.Image = bmp;
                     }
+                    /*
                     else if (button_RGB.Checked)
                     {
                         //RGB
@@ -292,7 +293,7 @@ namespace YuvImageShow
                         }
                         bmp.UnlockBits(bmpData);
                         pictureBox1.Image = bmp;
-                    }
+                    }*/
                     else if (button_Y8.Checked)
                     {
                         //Y8

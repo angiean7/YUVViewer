@@ -147,9 +147,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1205, 973);
+            this.ClientSize = new System.Drawing.Size(1197, 973);
             this.Controls.Add(this.size_box);
             this.Controls.Add(this.button_Y8);
             this.Controls.Add(this.button_RGB);
