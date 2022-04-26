@@ -34,10 +34,10 @@
             this.button_YUV444 = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button_browse = new System.Windows.Forms.Button();
-            this.button_convert = new System.Windows.Forms.Button();
             this.button_RGB = new System.Windows.Forms.RadioButton();
             this.button_Y8 = new System.Windows.Forms.RadioButton();
             this.size_box = new System.Windows.Forms.ComboBox();
+            this.button_convert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +91,7 @@
             // 
             // button_browse
             // 
+            this.button_browse.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button_browse.Location = new System.Drawing.Point(441, 13);
             this.button_browse.Name = "button_browse";
             this.button_browse.Size = new System.Drawing.Size(75, 23);
@@ -98,17 +99,6 @@
             this.button_browse.Text = "Browse";
             this.button_browse.UseVisualStyleBackColor = true;
             this.button_browse.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button_convert
-            // 
-            this.button_convert.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_convert.Location = new System.Drawing.Point(1053, 17);
-            this.button_convert.Name = "button_convert";
-            this.button_convert.Size = new System.Drawing.Size(75, 23);
-            this.button_convert.TabIndex = 6;
-            this.button_convert.Text = "Convert";
-            this.button_convert.UseVisualStyleBackColor = false;
-            this.button_convert.Click += new System.EventHandler(this.button2_Click);
             // 
             // button_RGB
             // 
@@ -141,7 +131,18 @@
             this.size_box.Name = "size_box";
             this.size_box.Size = new System.Drawing.Size(121, 23);
             this.size_box.TabIndex = 9;
-            this.size_box.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button_convert
+            // 
+            this.button_convert.BackColor = System.Drawing.Color.Gainsboro;
+            this.button_convert.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_convert.Location = new System.Drawing.Point(1053, 14);
+            this.button_convert.Name = "button_convert";
+            this.button_convert.Size = new System.Drawing.Size(75, 23);
+            this.button_convert.TabIndex = 6;
+            this.button_convert.Text = "Convert";
+            this.button_convert.UseVisualStyleBackColor = false;
+            this.button_convert.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -177,10 +178,10 @@
         private System.Windows.Forms.RadioButton button_YUV444;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button_browse;
-        private System.Windows.Forms.Button button_convert;
         private System.Windows.Forms.RadioButton button_RGB;
         private System.Windows.Forms.RadioButton button_Y8;
         private System.Windows.Forms.ComboBox size_box;
+        private System.Windows.Forms.Button button_convert;
     }
 }
 
