@@ -8,3 +8,4 @@ C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\bin\Release\YuvImageShow.pd
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.csprojAssemblyReference.cache
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.exe
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.pdb
+C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.imageShow.resources

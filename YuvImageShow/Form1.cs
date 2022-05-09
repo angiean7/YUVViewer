@@ -17,6 +17,7 @@ namespace YuvImageShow
 
     public partial class Form1 : Form
     {
+        private imageShow MaxPictureBoxName = new imageShow();
         public OpenFileDialog openDlg;
         public Form1()
         {
@@ -218,6 +219,7 @@ namespace YuvImageShow
             {
                 try
                 {
+                    PictureBox pictureBox1 = MaxPictureBoxName.GetPictureBox();
                     //open file and get buffer
                     pathname = openDlg.FileName;
                     FileStream file = File.Open(pathname, FileMode.Open);
@@ -319,6 +321,12 @@ namespace YuvImageShow
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void Display_Click(object sender, EventArgs e)
+        {
+            MaxPictureBoxName.Show();
+            MaxPictureBoxName.Activate();
         }
     }
 }
