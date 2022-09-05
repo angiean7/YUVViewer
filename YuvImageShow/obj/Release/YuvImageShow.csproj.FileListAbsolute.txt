@@ -18,3 +18,4 @@ C:\Users\atom\source\repos\YuvImageShow\YUVViewer\YuvImageShow\obj\Release\YuvIm
 C:\Users\atom\source\repos\YuvImageShow\YUVViewer\YuvImageShow\obj\Release\YuvImageShow.csproj.CoreCompileInputs.cache
 C:\Users\atom\source\repos\YuvImageShow\YUVViewer\YuvImageShow\obj\Release\YuvImageShow.exe
 C:\Users\atom\source\repos\YuvImageShow\YUVViewer\YuvImageShow\obj\Release\YuvImageShow.pdb
+C:\Users\atom\source\repos\YuvImageShow\YUVViewer\YuvImageShow\obj\Release\YuvImageShow.csprojAssemblyReference.cache

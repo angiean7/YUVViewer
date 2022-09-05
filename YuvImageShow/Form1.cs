@@ -361,21 +361,19 @@ namespace YuvImageShow
                     else if (button_Y8.Checked)
                     {
                         //Y8
-                        //byte[] newImgData = GrayYuvToRgbImage(buffer, (int)file.Length);
-                        byte[] newImgData = RAW10ToRgbImage(buffer, (int)file.Length);
-                        SaveImage(newImgData.Length, newImgData);
-                        //unsafe
-                        //{
-                            //byte* pNative = (byte*)bmpData.Scan0;
-                            //for (int len = 0; len < newImgData.Length; len++)
-                            //for (int len = 0; len < 6220800; len++)
-                            //for (int len = 0; len < 6221824; len++)
-                            //{
-                            //    pNative[len] = newImgData[len];
-                            //}
-                        //}
-                        //bmp.UnlockBits(bmpData);
-                        //pictureBox1.Image = bmp;
+                        byte[] newImgData = GrayYuvToRgbImage(buffer, (int)file.Length);
+                        //byte[] newImgData = RAW10ToRgbImage(buffer, (int)file.Length);
+                        //SaveImage(newImgData.Length, newImgData);
+                        unsafe
+                        {
+                            byte* pNative = (byte*)bmpData.Scan0;
+                            for (int len = 0; len < newImgData.Length; len++)
+                            {
+                                pNative[len] = newImgData[len];
+                            }
+                        }
+                        bmp.UnlockBits(bmpData);
+                        pictureBox1.Image = bmp;
                     }
                     
                     pictureBox1.Show();

@@ -48,7 +48,7 @@
             this.button_YUV420.AutoSize = true;
             this.button_YUV420.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_YUV420.Location = new System.Drawing.Point(9, 34);
-            this.button_YUV420.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_YUV420.Margin = new System.Windows.Forms.Padding(2);
             this.button_YUV420.Name = "button_YUV420";
             this.button_YUV420.Size = new System.Drawing.Size(59, 16);
             this.button_YUV420.TabIndex = 1;
@@ -61,7 +61,7 @@
             this.button_YUV422.AutoSize = true;
             this.button_YUV422.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_YUV422.Location = new System.Drawing.Point(71, 34);
-            this.button_YUV422.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_YUV422.Margin = new System.Windows.Forms.Padding(2);
             this.button_YUV422.Name = "button_YUV422";
             this.button_YUV422.Size = new System.Drawing.Size(59, 16);
             this.button_YUV422.TabIndex = 2;
@@ -74,7 +74,7 @@
             this.button_YUV444.AutoSize = true;
             this.button_YUV444.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_YUV444.Location = new System.Drawing.Point(134, 34);
-            this.button_YUV444.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_YUV444.Margin = new System.Windows.Forms.Padding(2);
             this.button_YUV444.Name = "button_YUV444";
             this.button_YUV444.Size = new System.Drawing.Size(59, 16);
             this.button_YUV444.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.textBox1.ForeColor = System.Drawing.Color.DeepPink;
             this.textBox1.Location = new System.Drawing.Point(9, 9);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(262, 21);
             this.textBox1.TabIndex = 4;
@@ -97,7 +97,7 @@
             this.button_browse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_browse.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_browse.Location = new System.Drawing.Point(288, 9);
-            this.button_browse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_browse.Margin = new System.Windows.Forms.Padding(2);
             this.button_browse.Name = "button_browse";
             this.button_browse.Size = new System.Drawing.Size(56, 18);
             this.button_browse.TabIndex = 5;
@@ -110,7 +110,7 @@
             this.button_RGB.AutoSize = true;
             this.button_RGB.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_RGB.Location = new System.Drawing.Point(194, 34);
-            this.button_RGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_RGB.Margin = new System.Windows.Forms.Padding(2);
             this.button_RGB.Name = "button_RGB";
             this.button_RGB.Size = new System.Drawing.Size(41, 16);
             this.button_RGB.TabIndex = 7;
@@ -123,7 +123,7 @@
             this.button_Y8.AutoSize = true;
             this.button_Y8.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_Y8.Location = new System.Drawing.Point(237, 34);
-            this.button_Y8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Y8.Margin = new System.Windows.Forms.Padding(2);
             this.button_Y8.Name = "button_Y8";
             this.button_Y8.Size = new System.Drawing.Size(35, 16);
             this.button_Y8.TabIndex = 8;
@@ -137,7 +137,7 @@
             this.button_convert.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_convert.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_convert.Location = new System.Drawing.Point(288, 34);
-            this.button_convert.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_convert.Margin = new System.Windows.Forms.Padding(2);
             this.button_convert.Name = "button_convert";
             this.button_convert.Size = new System.Drawing.Size(56, 18);
             this.button_convert.TabIndex = 6;
@@ -149,7 +149,7 @@
             // 
             this.WidthBox.ForeColor = System.Drawing.Color.DeepPink;
             this.WidthBox.Location = new System.Drawing.Point(367, 33);
-            this.WidthBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WidthBox.Margin = new System.Windows.Forms.Padding(2);
             this.WidthBox.Name = "WidthBox";
             this.WidthBox.Size = new System.Drawing.Size(55, 21);
             this.WidthBox.TabIndex = 11;
@@ -158,7 +158,7 @@
             // 
             this.HeightBox.ForeColor = System.Drawing.Color.DeepPink;
             this.HeightBox.Location = new System.Drawing.Point(425, 33);
-            this.HeightBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HeightBox.Margin = new System.Windows.Forms.Padding(2);
             this.HeightBox.Name = "HeightBox";
             this.HeightBox.Size = new System.Drawing.Size(55, 21);
             this.HeightBox.TabIndex = 12;
@@ -191,7 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(491, 117);
+            this.ClientSize = new System.Drawing.Size(491, 114);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HeightBox);
@@ -206,7 +206,7 @@
             this.Controls.Add(this.button_YUV420);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "ImageShow";
             this.Load += new System.EventHandler(this.Form1_Load);
