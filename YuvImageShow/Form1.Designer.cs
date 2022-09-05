@@ -46,11 +46,12 @@
             // button_YUV420
             // 
             this.button_YUV420.AutoSize = true;
+            this.button_YUV420.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_YUV420.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_YUV420.Location = new System.Drawing.Point(9, 34);
             this.button_YUV420.Margin = new System.Windows.Forms.Padding(2);
             this.button_YUV420.Name = "button_YUV420";
-            this.button_YUV420.Size = new System.Drawing.Size(59, 16);
+            this.button_YUV420.Size = new System.Drawing.Size(58, 16);
             this.button_YUV420.TabIndex = 1;
             this.button_YUV420.TabStop = true;
             this.button_YUV420.Text = "YUV420";
@@ -59,11 +60,12 @@
             // button_YUV422
             // 
             this.button_YUV422.AutoSize = true;
+            this.button_YUV422.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_YUV422.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_YUV422.Location = new System.Drawing.Point(71, 34);
             this.button_YUV422.Margin = new System.Windows.Forms.Padding(2);
             this.button_YUV422.Name = "button_YUV422";
-            this.button_YUV422.Size = new System.Drawing.Size(59, 16);
+            this.button_YUV422.Size = new System.Drawing.Size(58, 16);
             this.button_YUV422.TabIndex = 2;
             this.button_YUV422.TabStop = true;
             this.button_YUV422.Text = "YUV422";
@@ -72,11 +74,12 @@
             // button_YUV444
             // 
             this.button_YUV444.AutoSize = true;
+            this.button_YUV444.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_YUV444.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_YUV444.Location = new System.Drawing.Point(134, 34);
             this.button_YUV444.Margin = new System.Windows.Forms.Padding(2);
             this.button_YUV444.Name = "button_YUV444";
-            this.button_YUV444.Size = new System.Drawing.Size(59, 16);
+            this.button_YUV444.Size = new System.Drawing.Size(58, 16);
             this.button_YUV444.TabIndex = 3;
             this.button_YUV444.TabStop = true;
             this.button_YUV444.Text = "YUV444";
@@ -84,6 +87,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.LavenderBlush;
             this.textBox1.ForeColor = System.Drawing.Color.DeepPink;
             this.textBox1.Location = new System.Drawing.Point(9, 9);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -108,11 +112,12 @@
             // button_RGB
             // 
             this.button_RGB.AutoSize = true;
+            this.button_RGB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_RGB.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_RGB.Location = new System.Drawing.Point(194, 34);
             this.button_RGB.Margin = new System.Windows.Forms.Padding(2);
             this.button_RGB.Name = "button_RGB";
-            this.button_RGB.Size = new System.Drawing.Size(41, 16);
+            this.button_RGB.Size = new System.Drawing.Size(40, 16);
             this.button_RGB.TabIndex = 7;
             this.button_RGB.TabStop = true;
             this.button_RGB.Text = "RGB";
@@ -121,11 +126,12 @@
             // button_Y8
             // 
             this.button_Y8.AutoSize = true;
+            this.button_Y8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_Y8.ForeColor = System.Drawing.Color.DarkViolet;
             this.button_Y8.Location = new System.Drawing.Point(237, 34);
             this.button_Y8.Margin = new System.Windows.Forms.Padding(2);
             this.button_Y8.Name = "button_Y8";
-            this.button_Y8.Size = new System.Drawing.Size(35, 16);
+            this.button_Y8.Size = new System.Drawing.Size(34, 16);
             this.button_Y8.TabIndex = 8;
             this.button_Y8.TabStop = true;
             this.button_Y8.Text = "Y8";
@@ -147,6 +153,7 @@
             // 
             // WidthBox
             // 
+            this.WidthBox.BackColor = System.Drawing.Color.LavenderBlush;
             this.WidthBox.ForeColor = System.Drawing.Color.DeepPink;
             this.WidthBox.Location = new System.Drawing.Point(367, 33);
             this.WidthBox.Margin = new System.Windows.Forms.Padding(2);
@@ -156,6 +163,7 @@
             // 
             // HeightBox
             // 
+            this.HeightBox.BackColor = System.Drawing.Color.LavenderBlush;
             this.HeightBox.ForeColor = System.Drawing.Color.DeepPink;
             this.HeightBox.Location = new System.Drawing.Point(425, 33);
             this.HeightBox.Margin = new System.Windows.Forms.Padding(2);
