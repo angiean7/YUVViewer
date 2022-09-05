@@ -35,18 +35,20 @@
             this.button_browse = new System.Windows.Forms.Button();
             this.button_RGB = new System.Windows.Forms.RadioButton();
             this.button_Y8 = new System.Windows.Forms.RadioButton();
-            this.size_box = new System.Windows.Forms.ComboBox();
             this.button_convert = new System.Windows.Forms.Button();
-            this.Display = new System.Windows.Forms.Button();
+            this.WidthBox = new System.Windows.Forms.TextBox();
+            this.HeightBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_YUV420
             // 
             this.button_YUV420.AutoSize = true;
-            this.button_YUV420.Location = new System.Drawing.Point(418, 14);
-            this.button_YUV420.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_YUV420.Location = new System.Drawing.Point(12, 42);
+            this.button_YUV420.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_YUV420.Name = "button_YUV420";
-            this.button_YUV420.Size = new System.Drawing.Size(59, 16);
+            this.button_YUV420.Size = new System.Drawing.Size(76, 19);
             this.button_YUV420.TabIndex = 1;
             this.button_YUV420.TabStop = true;
             this.button_YUV420.Text = "YUV420";
@@ -55,10 +57,10 @@
             // button_YUV422
             // 
             this.button_YUV422.AutoSize = true;
-            this.button_YUV422.Location = new System.Drawing.Point(480, 14);
-            this.button_YUV422.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_YUV422.Location = new System.Drawing.Point(95, 42);
+            this.button_YUV422.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_YUV422.Name = "button_YUV422";
-            this.button_YUV422.Size = new System.Drawing.Size(59, 16);
+            this.button_YUV422.Size = new System.Drawing.Size(76, 19);
             this.button_YUV422.TabIndex = 2;
             this.button_YUV422.TabStop = true;
             this.button_YUV422.Text = "YUV422";
@@ -67,10 +69,10 @@
             // button_YUV444
             // 
             this.button_YUV444.AutoSize = true;
-            this.button_YUV444.Location = new System.Drawing.Point(542, 14);
-            this.button_YUV444.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_YUV444.Location = new System.Drawing.Point(178, 42);
+            this.button_YUV444.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_YUV444.Name = "button_YUV444";
-            this.button_YUV444.Size = new System.Drawing.Size(59, 16);
+            this.button_YUV444.Size = new System.Drawing.Size(76, 19);
             this.button_YUV444.TabIndex = 3;
             this.button_YUV444.TabStop = true;
             this.button_YUV444.Text = "YUV444";
@@ -78,19 +80,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(52, 10);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(12, 11);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(262, 21);
+            this.textBox1.Size = new System.Drawing.Size(348, 25);
             this.textBox1.TabIndex = 4;
             // 
             // button_browse
             // 
             this.button_browse.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button_browse.Location = new System.Drawing.Point(331, 10);
-            this.button_browse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_browse.Location = new System.Drawing.Point(384, 11);
+            this.button_browse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_browse.Name = "button_browse";
-            this.button_browse.Size = new System.Drawing.Size(56, 18);
+            this.button_browse.Size = new System.Drawing.Size(75, 22);
             this.button_browse.TabIndex = 5;
             this.button_browse.Text = "Browse";
             this.button_browse.UseVisualStyleBackColor = true;
@@ -99,10 +101,10 @@
             // button_RGB
             // 
             this.button_RGB.AutoSize = true;
-            this.button_RGB.Location = new System.Drawing.Point(603, 14);
-            this.button_RGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_RGB.Location = new System.Drawing.Point(259, 42);
+            this.button_RGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_RGB.Name = "button_RGB";
-            this.button_RGB.Size = new System.Drawing.Size(41, 16);
+            this.button_RGB.Size = new System.Drawing.Size(52, 19);
             this.button_RGB.TabIndex = 7;
             this.button_RGB.TabStop = true;
             this.button_RGB.Text = "RGB";
@@ -111,61 +113,73 @@
             // button_Y8
             // 
             this.button_Y8.AutoSize = true;
-            this.button_Y8.Location = new System.Drawing.Point(646, 14);
-            this.button_Y8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Y8.Location = new System.Drawing.Point(316, 42);
+            this.button_Y8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Y8.Name = "button_Y8";
-            this.button_Y8.Size = new System.Drawing.Size(35, 16);
+            this.button_Y8.Size = new System.Drawing.Size(44, 19);
             this.button_Y8.TabIndex = 8;
             this.button_Y8.TabStop = true;
             this.button_Y8.Text = "Y8";
             this.button_Y8.UseVisualStyleBackColor = true;
             // 
-            // size_box
-            // 
-            this.size_box.FormattingEnabled = true;
-            this.size_box.Items.AddRange(new object[] {
-            "1920*1020"});
-            this.size_box.Location = new System.Drawing.Point(684, 11);
-            this.size_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.size_box.Name = "size_box";
-            this.size_box.Size = new System.Drawing.Size(92, 20);
-            this.size_box.TabIndex = 9;
-            // 
             // button_convert
             // 
-            this.button_convert.BackColor = System.Drawing.Color.Gainsboro;
-            this.button_convert.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button_convert.Location = new System.Drawing.Point(790, 11);
-            this.button_convert.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_convert.BackColor = System.Drawing.Color.LightGreen;
+            this.button_convert.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_convert.Location = new System.Drawing.Point(384, 42);
+            this.button_convert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_convert.Name = "button_convert";
-            this.button_convert.Size = new System.Drawing.Size(56, 18);
+            this.button_convert.Size = new System.Drawing.Size(75, 22);
             this.button_convert.TabIndex = 6;
             this.button_convert.Text = "Convert";
             this.button_convert.UseVisualStyleBackColor = false;
             this.button_convert.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Display
+            // WidthBox
             // 
-            this.Display.BackColor = System.Drawing.Color.Gainsboro;
-            this.Display.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Display.Location = new System.Drawing.Point(790, 33);
-            this.Display.Margin = new System.Windows.Forms.Padding(2);
-            this.Display.Name = "Display";
-            this.Display.Size = new System.Drawing.Size(56, 18);
-            this.Display.TabIndex = 10;
-            this.Display.Text = "Display";
-            this.Display.UseVisualStyleBackColor = false;
-            this.Display.Click += new System.EventHandler(this.Display_Click);
+            this.WidthBox.Location = new System.Drawing.Point(489, 41);
+            this.WidthBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.WidthBox.Name = "WidthBox";
+            this.WidthBox.Size = new System.Drawing.Size(72, 25);
+            this.WidthBox.TabIndex = 11;
+            // 
+            // HeightBox
+            // 
+            this.HeightBox.Location = new System.Drawing.Point(567, 41);
+            this.HeightBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HeightBox.Name = "HeightBox";
+            this.HeightBox.Size = new System.Drawing.Size(72, 25);
+            this.HeightBox.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(486, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 15);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Width:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(561, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Height:";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(898, 778);
-            this.Controls.Add(this.Display);
-            this.Controls.Add(this.size_box);
+            this.ClientSize = new System.Drawing.Size(655, 75);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.HeightBox);
+            this.Controls.Add(this.WidthBox);
             this.Controls.Add(this.button_Y8);
             this.Controls.Add(this.button_RGB);
             this.Controls.Add(this.button_convert);
@@ -174,7 +188,7 @@
             this.Controls.Add(this.button_YUV444);
             this.Controls.Add(this.button_YUV422);
             this.Controls.Add(this.button_YUV420);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "ImageShow";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -191,9 +205,11 @@
         private System.Windows.Forms.Button button_browse;
         private System.Windows.Forms.RadioButton button_RGB;
         private System.Windows.Forms.RadioButton button_Y8;
-        private System.Windows.Forms.ComboBox size_box;
         private System.Windows.Forms.Button button_convert;
-        private System.Windows.Forms.Button Display;
+        private System.Windows.Forms.TextBox WidthBox;
+        private System.Windows.Forms.TextBox HeightBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

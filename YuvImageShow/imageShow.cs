@@ -26,5 +26,10 @@ namespace YuvImageShow
         {
             return pictureBox1;
         }
+
+        private void imageShow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
     }
 }

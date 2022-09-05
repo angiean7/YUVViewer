@@ -5,7 +5,6 @@ C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.cs
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\bin\Release\YuvImageShow.exe.config
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\bin\Release\YuvImageShow.exe
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\bin\Release\YuvImageShow.pdb
-C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.csprojAssemblyReference.cache
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.exe
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.pdb
 C:\Users\atom\source\repos\YuvImageShow\YuvImageShow\obj\Release\YuvImageShow.imageShow.resources

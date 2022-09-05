@@ -17,6 +17,7 @@ namespace YuvImageShow
 
     public partial class Form1 : Form
     {
+        private readonly string LOCAL_PATH = System.Environment.CurrentDirectory + "\\Data";
         private imageShow MaxPictureBoxName = new imageShow();
         public OpenFileDialog openDlg;
         public Form1()
@@ -26,8 +27,9 @@ namespace YuvImageShow
   		
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            size_box.SelectedIndex = 0;
+            WidthBox.Text = "1920";
+            HeightBox.Text = "1080";
+            MaxPictureBoxName.Show();
         }
         
         private void button1_Click(object sender, EventArgs e)
@@ -47,6 +49,50 @@ namespace YuvImageShow
             else
                 pixelValue = (pixelValue < 0) ? 0 : 255;
             return pixelValue;
+        }
+
+        private unsafe byte[] RAW10ToRgbImage(IntPtr buffer, long bufferLength)
+        {
+            IntPtr pImageData = buffer;
+            long nLength = bufferLength;
+            byte[] RgbImgData = new byte[nLength * 4 / 5];
+            byte[] pixel_y = new byte[5];
+            byte[] value = new byte[4];
+            int iYuvOff = 0;
+            int iRgbOff = 0;
+            int pixelValue = 0;
+            byte* pbtYuvImageData = (byte*)pImageData;
+
+            while (iYuvOff < nLength)
+            {
+                for (int i = 0; i < 5; i++) 
+                {
+                    pixel_y[i] = *(pbtYuvImageData + iYuvOff + i);
+                }
+                //value[0] = (byte)(((pixel_y[0] & 0xFC)>>2) | ((pixel_y[1] & 0x03)<<6));
+                //value[1] = (byte)(((pixel_y[1] & 0xF0)>>4) | ((pixel_y[2] & 0x0F)<<4));
+                //value[2] = (byte)(((pixel_y[2] & 0xC0)>>6) | ((pixel_y[3] & 0x3F)<<2));
+
+                value[0] = (byte)((pixel_y[0]>> 2) | (pixel_y[1]<< 6));
+                value[1] = (byte)((pixel_y[1]>> 4) | (pixel_y[2]<< 4));
+                value[2] = (byte)((pixel_y[2]>> 6) | (pixel_y[3]<< 2));
+                value[3] = pixel_y[4];
+                //for (int i = 0; i < 4; i++)
+                //{
+                //    pixelValue = GetPixelValue((int)(1164 * (value[i] - 16)));
+                //    RgbImgData[iRgbOff + i * 3 + 0] = (byte)pixelValue;
+                //    RgbImgData[iRgbOff + i * 3 + 1] = (byte)pixelValue;
+                //    RgbImgData[iRgbOff + i * 3 + 2] = (byte)pixelValue;
+                //}
+                //iRgbOff = iRgbOff + 12;
+                for (int i = 0; i < 4; i++)
+                {
+                    RgbImgData[iRgbOff + i] = value[i];
+                }
+                iRgbOff = iRgbOff + 4;
+                iYuvOff = iYuvOff + 5;
+            }
+            return RgbImgData;
         }
 
         private unsafe byte[] ColorYuv420ToRgbImage(IntPtr buffer, long bufferLength)
@@ -149,8 +195,9 @@ namespace YuvImageShow
             int rgb_pixel_B = 0;
             int iYuvOff = 0;
             int iRgbOff = 0;
-            byte[] RgbImgData = new byte[bufferLength];
+            byte[] RgbImgData = new byte[bufferLength - 4 * 1053];
             byte* pbtYuvImageData = (byte*)pImageData;
+            int lineCnt = 0;
 
             for (iYuvOff = 0; iYuvOff < bufferLength; iYuvOff += 3)
             {
@@ -166,8 +213,17 @@ namespace YuvImageShow
                 RgbImgData[iRgbOff + 1] = (byte)rgb_pixel_G;
                 RgbImgData[iRgbOff + 2] = (byte)rgb_pixel_R;
 
-                iRgbOff = iRgbOff + 3;
-            }
+                if (iRgbOff < bufferLength - 4 * 1053-3)
+                    iRgbOff = iRgbOff + 3;
+                else
+                    break;
+
+                //if ((iYuvOff != 0)&& ((iYuvOff - lineCnt*4) % 1204 == 0))
+                //{
+                //    iYuvOff += 4;
+                //    lineCnt++;
+                //}
+            } 
 
             return RgbImgData;
         }
@@ -207,7 +263,10 @@ namespace YuvImageShow
                 RgbImgData[iRgbOff + 4] = (byte)pixel_G;
                 RgbImgData[iRgbOff + 5] = (byte)pixel_R;
 
-                iRgbOff = iRgbOff + 6;
+                if (iRgbOff < RgbImgData.Length - 6)
+                    iRgbOff = iRgbOff + 6;
+                else
+                    break;
             }
             return RgbImgData;
         }
@@ -220,7 +279,7 @@ namespace YuvImageShow
                 try
                 {
                     PictureBox pictureBox1 = MaxPictureBoxName.GetPictureBox();
-                    //open file and get buffer
+                    //open file and get buffer                   
                     pathname = openDlg.FileName;
                     FileStream file = File.Open(pathname, FileMode.Open);
                     byte[] b_buffer = new byte[file.Length];
@@ -229,8 +288,10 @@ namespace YuvImageShow
                     IntPtr buffer = Marshal.AllocHGlobal((IntPtr)file.Length);
                     buffer = System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(b_buffer, 0);
 
-                    Bitmap bmp = new Bitmap(1920, 1080, PixelFormat.Format24bppRgb);
+                    Bitmap bmp = new Bitmap(int.Parse(WidthBox.Text.ToString()), int.Parse(HeightBox.Text.ToString()), PixelFormat.Format24bppRgb);
+                    //Bitmap bmp = new Bitmap(480, 1080, PixelFormat.Format24bppRgb);
                     //Bitmap bmp = new Bitmap(176, 144, PixelFormat.Format24bppRgb);
+                    //Bitmap bmp = new Bitmap(1684, 1894, PixelFormat.Format24bppRgb);
                     BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
 
 
@@ -241,8 +302,8 @@ namespace YuvImageShow
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
-                            //for (int len = 0; len < newImgData.Length; len++)
-                            for (int len = 0; len < 6220800; len++)
+                            for (int len = 0; len < newImgData.Length; len++)
+                            //for (int len = 0; len < 6220800; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -271,8 +332,9 @@ namespace YuvImageShow
                         byte[] newImgData = ColorYuv444ToRgbImage(buffer, (int)file.Length);
                         unsafe
                         {
-                            byte* pNative = (byte*)bmpData.Scan0; 
+                            byte* pNative = (byte*)bmpData.Scan0;
                             for (int len = 0; len < newImgData.Length; len++)
+                            //for (int len = 0; len < 3805184; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -288,6 +350,7 @@ namespace YuvImageShow
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
                             for (int len = 0; len < newImgData.Length; len++)
+                            //for (int len = 0; len < 9572352; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -298,17 +361,21 @@ namespace YuvImageShow
                     else if (button_Y8.Checked)
                     {
                         //Y8
-                        byte[] newImgData = GrayYuvToRgbImage(buffer, (int)file.Length);
-                        unsafe
-                        {
-                            byte* pNative = (byte*)bmpData.Scan0;
-                            for (int len = 0; len < newImgData.Length; len++)
-                            {
-                                pNative[len] = newImgData[len];
-                            }
-                        }
-                        bmp.UnlockBits(bmpData);
-                        pictureBox1.Image = bmp;
+                        //byte[] newImgData = GrayYuvToRgbImage(buffer, (int)file.Length);
+                        byte[] newImgData = RAW10ToRgbImage(buffer, (int)file.Length);
+                        SaveImage(newImgData.Length, newImgData);
+                        //unsafe
+                        //{
+                            //byte* pNative = (byte*)bmpData.Scan0;
+                            //for (int len = 0; len < newImgData.Length; len++)
+                            //for (int len = 0; len < 6220800; len++)
+                            //for (int len = 0; len < 6221824; len++)
+                            //{
+                            //    pNative[len] = newImgData[len];
+                            //}
+                        //}
+                        //bmp.UnlockBits(bmpData);
+                        //pictureBox1.Image = bmp;
                     }
                     
                     pictureBox1.Show();
@@ -327,6 +394,37 @@ namespace YuvImageShow
         {
             MaxPictureBoxName.Show();
             MaxPictureBoxName.Activate();
+        }
+
+        public void SaveImage(int length, byte[] pBuffer)
+        {
+            try
+            {
+                string typeName = "\\Image_";
+                if (!File.Exists(LOCAL_PATH))
+                {
+                    Directory.CreateDirectory(LOCAL_PATH);
+                }
+
+                string fileName = LOCAL_PATH + typeName + NowTime().ToString("yyyyMMdd HHmmssfff") + ".bin";
+                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write))
+                {
+                    byte[] Buffer = new byte[length];
+                    Buffer = (byte[])pBuffer.Clone();
+
+                    fs.Write(Buffer, 0, Buffer.Length);
+                    fs.Close();
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private DateTime NowTime()
+        {
+            return (DateTime.Now);
         }
     }
 }
