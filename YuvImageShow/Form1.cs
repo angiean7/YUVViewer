@@ -20,6 +20,9 @@ namespace YuvImageShow
         private readonly string LOCAL_PATH = System.Environment.CurrentDirectory + "\\Data";
         private imageShow MaxPictureBoxName = new imageShow();
         public OpenFileDialog openDlg;
+        private byte[] newImgData;
+        Bitmap bmp;
+
         public Form1()
         {
             InitializeComponent();
@@ -195,9 +198,8 @@ namespace YuvImageShow
             int rgb_pixel_B = 0;
             int iYuvOff = 0;
             int iRgbOff = 0;
-            byte[] RgbImgData = new byte[bufferLength - 4 * 1053];
+            byte[] RgbImgData = new byte[bufferLength];// - 4 * 1053];
             byte* pbtYuvImageData = (byte*)pImageData;
-            int lineCnt = 0;
 
             for (iYuvOff = 0; iYuvOff < bufferLength; iYuvOff += 3)
             {
@@ -213,16 +215,10 @@ namespace YuvImageShow
                 RgbImgData[iRgbOff + 1] = (byte)rgb_pixel_G;
                 RgbImgData[iRgbOff + 2] = (byte)rgb_pixel_R;
 
-                if (iRgbOff < bufferLength - 4 * 1053-3)
+                if (iRgbOff < bufferLength - 6)
                     iRgbOff = iRgbOff + 3;
                 else
                     break;
-
-                //if ((iYuvOff != 0)&& ((iYuvOff - lineCnt*4) % 1204 == 0))
-                //{
-                //    iYuvOff += 4;
-                //    lineCnt++;
-                //}
             } 
 
             return RgbImgData;
@@ -288,22 +284,18 @@ namespace YuvImageShow
                     IntPtr buffer = Marshal.AllocHGlobal((IntPtr)file.Length);
                     buffer = System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(b_buffer, 0);
 
-                    Bitmap bmp = new Bitmap(int.Parse(WidthBox.Text.ToString()), int.Parse(HeightBox.Text.ToString()), PixelFormat.Format24bppRgb);
-                    //Bitmap bmp = new Bitmap(480, 1080, PixelFormat.Format24bppRgb);
-                    //Bitmap bmp = new Bitmap(176, 144, PixelFormat.Format24bppRgb);
-                    //Bitmap bmp = new Bitmap(1684, 1894, PixelFormat.Format24bppRgb);
+                    bmp = new Bitmap(int.Parse(WidthBox.Text.ToString()), int.Parse(HeightBox.Text.ToString()), PixelFormat.Format24bppRgb);
                     BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
 
 
                     if (button_YUV420.Checked)
                     {
                         //YUV420
-                        byte[] newImgData = ColorYuv420ToRgbImage(buffer, (int)file.Length);
+                        newImgData = ColorYuv420ToRgbImage(buffer, (int)file.Length);
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
                             for (int len = 0; len < newImgData.Length; len++)
-                            //for (int len = 0; len < 6220800; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -314,7 +306,7 @@ namespace YuvImageShow
                     else if (button_YUV422.Checked)
                     {
                         //YUV422
-                        byte[] newImgData = ColorYuv422ToRgbImage(buffer, (int)file.Length);
+                        newImgData = ColorYuv422ToRgbImage(buffer, (int)file.Length);
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
@@ -329,12 +321,11 @@ namespace YuvImageShow
                     else if (button_YUV444.Checked)
                     {
                         //YUV444
-                        byte[] newImgData = ColorYuv444ToRgbImage(buffer, (int)file.Length);
+                        newImgData = ColorYuv444ToRgbImage(buffer, (int)file.Length);
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
                             for (int len = 0; len < newImgData.Length; len++)
-                            //for (int len = 0; len < 3805184; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -345,12 +336,11 @@ namespace YuvImageShow
                     else if (button_RGB.Checked)
                     {
                         //RGB
-                        byte[] newImgData = b_buffer;
+                        newImgData = b_buffer;
                         unsafe
                         {
                             byte* pNative = (byte*)bmpData.Scan0;
                             for (int len = 0; len < newImgData.Length; len++)
-                            //for (int len = 0; len < 9572352; len++)
                             {
                                 pNative[len] = newImgData[len];
                             }
@@ -361,7 +351,7 @@ namespace YuvImageShow
                     else if (button_Y8.Checked)
                     {
                         //Y8
-                        byte[] newImgData = GrayYuvToRgbImage(buffer, (int)file.Length);
+                        newImgData = GrayYuvToRgbImage(buffer, (int)file.Length);
                         //byte[] newImgData = RAW10ToRgbImage(buffer, (int)file.Length);
                         //SaveImage(newImgData.Length, newImgData);
                         unsafe
@@ -423,6 +413,20 @@ namespace YuvImageShow
         private DateTime NowTime()
         {
             return (DateTime.Now);
+        }
+
+        private void Btn_Save_Click(object sender, EventArgs e)
+        {
+            //SaveImage(newImgData.Length, newImgData);
+            string typeName = "\\Image_";
+            if (!File.Exists(LOCAL_PATH))
+            {
+                Directory.CreateDirectory(LOCAL_PATH);
+            }
+
+            string fileName = LOCAL_PATH + typeName + NowTime().ToString("yyyyMMdd HHmmssfff") + ".jpg";
+
+            bmp.Save(fileName);
         }
     }
 }

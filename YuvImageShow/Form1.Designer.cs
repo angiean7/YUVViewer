@@ -41,6 +41,7 @@
             this.HeightBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Btn_Save = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_YUV420
@@ -48,10 +49,10 @@
             this.button_YUV420.AutoSize = true;
             this.button_YUV420.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_YUV420.ForeColor = System.Drawing.Color.DarkViolet;
-            this.button_YUV420.Location = new System.Drawing.Point(9, 34);
-            this.button_YUV420.Margin = new System.Windows.Forms.Padding(2);
+            this.button_YUV420.Location = new System.Drawing.Point(20, 11);
+            this.button_YUV420.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_YUV420.Name = "button_YUV420";
-            this.button_YUV420.Size = new System.Drawing.Size(58, 16);
+            this.button_YUV420.Size = new System.Drawing.Size(75, 19);
             this.button_YUV420.TabIndex = 1;
             this.button_YUV420.TabStop = true;
             this.button_YUV420.Text = "YUV420";
@@ -62,10 +63,10 @@
             this.button_YUV422.AutoSize = true;
             this.button_YUV422.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_YUV422.ForeColor = System.Drawing.Color.DarkViolet;
-            this.button_YUV422.Location = new System.Drawing.Point(71, 34);
-            this.button_YUV422.Margin = new System.Windows.Forms.Padding(2);
+            this.button_YUV422.Location = new System.Drawing.Point(103, 11);
+            this.button_YUV422.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_YUV422.Name = "button_YUV422";
-            this.button_YUV422.Size = new System.Drawing.Size(58, 16);
+            this.button_YUV422.Size = new System.Drawing.Size(75, 19);
             this.button_YUV422.TabIndex = 2;
             this.button_YUV422.TabStop = true;
             this.button_YUV422.Text = "YUV422";
@@ -76,10 +77,10 @@
             this.button_YUV444.AutoSize = true;
             this.button_YUV444.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_YUV444.ForeColor = System.Drawing.Color.DarkViolet;
-            this.button_YUV444.Location = new System.Drawing.Point(134, 34);
-            this.button_YUV444.Margin = new System.Windows.Forms.Padding(2);
+            this.button_YUV444.Location = new System.Drawing.Point(187, 11);
+            this.button_YUV444.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_YUV444.Name = "button_YUV444";
-            this.button_YUV444.Size = new System.Drawing.Size(58, 16);
+            this.button_YUV444.Size = new System.Drawing.Size(75, 19);
             this.button_YUV444.TabIndex = 3;
             this.button_YUV444.TabStop = true;
             this.button_YUV444.Text = "YUV444";
@@ -89,10 +90,10 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.LavenderBlush;
             this.textBox1.ForeColor = System.Drawing.Color.DeepPink;
-            this.textBox1.Location = new System.Drawing.Point(9, 9);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(20, 34);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(262, 21);
+            this.textBox1.Size = new System.Drawing.Size(347, 25);
             this.textBox1.TabIndex = 4;
             // 
             // button_browse
@@ -100,10 +101,10 @@
             this.button_browse.BackColor = System.Drawing.Color.LavenderBlush;
             this.button_browse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_browse.ForeColor = System.Drawing.Color.DarkViolet;
-            this.button_browse.Location = new System.Drawing.Point(288, 9);
-            this.button_browse.Margin = new System.Windows.Forms.Padding(2);
+            this.button_browse.Location = new System.Drawing.Point(373, 34);
+            this.button_browse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_browse.Name = "button_browse";
-            this.button_browse.Size = new System.Drawing.Size(56, 18);
+            this.button_browse.Size = new System.Drawing.Size(95, 25);
             this.button_browse.TabIndex = 5;
             this.button_browse.Text = "Browse";
             this.button_browse.UseVisualStyleBackColor = false;
@@ -114,10 +115,10 @@
             this.button_RGB.AutoSize = true;
             this.button_RGB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_RGB.ForeColor = System.Drawing.Color.DarkViolet;
-            this.button_RGB.Location = new System.Drawing.Point(194, 34);
-            this.button_RGB.Margin = new System.Windows.Forms.Padding(2);
+            this.button_RGB.Location = new System.Drawing.Point(267, 11);
+            this.button_RGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_RGB.Name = "button_RGB";
-            this.button_RGB.Size = new System.Drawing.Size(40, 16);
+            this.button_RGB.Size = new System.Drawing.Size(51, 19);
             this.button_RGB.TabIndex = 7;
             this.button_RGB.TabStop = true;
             this.button_RGB.Text = "RGB";
@@ -128,10 +129,10 @@
             this.button_Y8.AutoSize = true;
             this.button_Y8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_Y8.ForeColor = System.Drawing.Color.DarkViolet;
-            this.button_Y8.Location = new System.Drawing.Point(237, 34);
-            this.button_Y8.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Y8.Location = new System.Drawing.Point(324, 11);
+            this.button_Y8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Y8.Name = "button_Y8";
-            this.button_Y8.Size = new System.Drawing.Size(34, 16);
+            this.button_Y8.Size = new System.Drawing.Size(43, 19);
             this.button_Y8.TabIndex = 8;
             this.button_Y8.TabStop = true;
             this.button_Y8.Text = "Y8";
@@ -142,10 +143,10 @@
             this.button_convert.BackColor = System.Drawing.Color.HotPink;
             this.button_convert.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_convert.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_convert.Location = new System.Drawing.Point(288, 34);
-            this.button_convert.Margin = new System.Windows.Forms.Padding(2);
+            this.button_convert.Location = new System.Drawing.Point(373, 68);
+            this.button_convert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_convert.Name = "button_convert";
-            this.button_convert.Size = new System.Drawing.Size(56, 18);
+            this.button_convert.Size = new System.Drawing.Size(95, 25);
             this.button_convert.TabIndex = 6;
             this.button_convert.Text = "Convert";
             this.button_convert.UseVisualStyleBackColor = false;
@@ -155,30 +156,29 @@
             // 
             this.WidthBox.BackColor = System.Drawing.Color.LavenderBlush;
             this.WidthBox.ForeColor = System.Drawing.Color.DeepPink;
-            this.WidthBox.Location = new System.Drawing.Point(367, 33);
-            this.WidthBox.Margin = new System.Windows.Forms.Padding(2);
+            this.WidthBox.Location = new System.Drawing.Point(20, 88);
+            this.WidthBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WidthBox.Name = "WidthBox";
-            this.WidthBox.Size = new System.Drawing.Size(55, 21);
+            this.WidthBox.Size = new System.Drawing.Size(72, 25);
             this.WidthBox.TabIndex = 11;
             // 
             // HeightBox
             // 
             this.HeightBox.BackColor = System.Drawing.Color.LavenderBlush;
             this.HeightBox.ForeColor = System.Drawing.Color.DeepPink;
-            this.HeightBox.Location = new System.Drawing.Point(425, 33);
-            this.HeightBox.Margin = new System.Windows.Forms.Padding(2);
+            this.HeightBox.Location = new System.Drawing.Point(98, 88);
+            this.HeightBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HeightBox.Name = "HeightBox";
-            this.HeightBox.Size = new System.Drawing.Size(55, 21);
+            this.HeightBox.Size = new System.Drawing.Size(72, 25);
             this.HeightBox.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.DarkViolet;
-            this.label1.Location = new System.Drawing.Point(364, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(19, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 13;
             this.label1.Text = "Width:";
             // 
@@ -186,20 +186,35 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.DarkViolet;
-            this.label2.Location = new System.Drawing.Point(421, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(95, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 14;
             this.label2.Text = "Height:";
             // 
+            // Btn_Save
+            // 
+            this.Btn_Save.BackColor = System.Drawing.Color.HotPink;
+            this.Btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Save.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_Save.Location = new System.Drawing.Point(373, 100);
+            this.Btn_Save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Save.Name = "Btn_Save";
+            this.Btn_Save.Size = new System.Drawing.Size(95, 25);
+            this.Btn_Save.TabIndex = 15;
+            this.Btn_Save.Text = "Save";
+            this.Btn_Save.UseVisualStyleBackColor = false;
+            this.Btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(491, 114);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(496, 146);
+            this.Controls.Add(this.Btn_Save);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HeightBox);
@@ -214,7 +229,7 @@
             this.Controls.Add(this.button_YUV420);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "ImageShow";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -236,6 +251,7 @@
         private System.Windows.Forms.TextBox HeightBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Btn_Save;
     }
 }
 
